@@ -11,7 +11,9 @@ export const server = new ApolloServer({
   context: contextMiddleware,
 });
 
+const PORT = process.env.PORT || 5000;
+
 connectDB();
-server.listen({ port: 4000 }).then(({ url }) => {
+server.listen({ port: PORT }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
