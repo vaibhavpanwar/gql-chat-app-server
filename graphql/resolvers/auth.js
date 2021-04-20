@@ -16,7 +16,7 @@ export default {
         } else {
           const token = jwt.sign(
             { userId: user.id, email: user.email, fullName: user.fullName },
-            "somesupersecretkey",
+            process.env.DB_CONNECTION,
             {
               expiresIn: "36000000000",
             }
@@ -32,7 +32,7 @@ export default {
     getUser: async (_, { token }) => {
       console.log(token, "token");
       try {
-        const decoded = jwt.verify(token, "somesupersecretkey");
+        const decoded = jwt.verify(token, process.env.DB_CONNECTION);
 
         const user = await User.findById(decoded.userId).select("-password");
 
@@ -70,7 +70,7 @@ export default {
             email: result.email,
             fullName: result.fullName,
           },
-          "somesupersecretkey",
+          process.env.DB_CONNECTION,
           {
             expiresIn: "360000000000",
           }

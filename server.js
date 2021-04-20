@@ -3,7 +3,9 @@ import connectDB from "./config/db.js";
 import resolvers from "./graphql/resolvers/index.js";
 import typeDefs from "./graphql/schema/index.js";
 import contextMiddleware from "./middleware/contextMiddleware.js";
-// const connectDB = require("./config/db");
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const server = new ApolloServer({
   typeDefs,

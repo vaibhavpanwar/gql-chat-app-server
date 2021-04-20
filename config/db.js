@@ -2,14 +2,11 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(
-      "mongodb+srv://vaibhav:vaibhav@cluster0.7owr0.mongodb.net/gqlChat?retryWrites=true&w=majority",
-      {
-        useUnifiedTopology: true,
-        useNewUrlParser: true,
-        useCreateIndex: true,
-      }
-    );
+    const conn = await mongoose.connect(process.env.DB_CONNECTION, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true,
+    });
 
     console.log(`MongoDB Connected:`);
   } catch (error) {
